@@ -9,24 +9,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var store: CourseStore
+    
     var body: some View {
-        VStack {
-            ContentView()
-           // CourseView()
-           
-            /*
-             if works = true {
-             made by Ryan
-                else {
-             made by Kyle
-             */
-
+        NavigationView {
+            ScrollView {
+                ForEach(store.courses) { course in
+                    NavigationLink(destination: Text("Course Destination")) {
+                        CourseOverview(course)
+                            .padding(.horizontal)
+                            .padding(.vertical, 10)
+                    }
+                }
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .navigationBarTitle("Classes")
+        }
+        .onAppear {
+            self.store.fetchCourses()
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(CourseStore())
     }
 }

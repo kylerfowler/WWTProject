@@ -12,6 +12,7 @@ struct Course: Identifiable {
     var id = UUID()
     
     var name: String
+    var teacher: String
     var students: [Student]
 }
 
