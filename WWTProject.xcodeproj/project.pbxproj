@@ -14,6 +14,7 @@
 		90E3D80B23D8CC66009C764C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E3D80A23D8CC66009C764C /* Assets.xcassets */; };
 		90E3D80E23D8CC66009C764C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E3D80D23D8CC66009C764C /* Preview Assets.xcassets */; };
 		90E3D81123D8CC66009C764C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90E3D80F23D8CC66009C764C /* LaunchScreen.storyboard */; };
+		90E3D81A23D8D14C009C764C /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D81923D8D14C009C764C /* Course.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		90E3D80D23D8CC66009C764C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		90E3D81023D8CC66009C764C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90E3D81223D8CC66009C764C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90E3D81923D8D14C009C764C /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				90E3D80123D8CC5D009C764C /* AppDelegate.swift */,
 				90E3D80323D8CC5D009C764C /* SceneDelegate.swift */,
 				90E3D80823D8CC5D009C764C /* ContentView.swift */,
+				90E3D81923D8D14C009C764C /* Course.swift */,
 				90E3D80A23D8CC66009C764C /* Assets.xcassets */,
 				90E3D80F23D8CC66009C764C /* LaunchScreen.storyboard */,
 				90E3D81223D8CC66009C764C /* Info.plist */,
@@ -151,6 +154,7 @@
 			files = (
 				90E3D80723D8CC5D009C764C /* WWTProject.xcdatamodeld in Sources */,
 				90E3D80223D8CC5D009C764C /* AppDelegate.swift in Sources */,
+				90E3D81A23D8D14C009C764C /* Course.swift in Sources */,
 				90E3D80923D8CC5D009C764C /* ContentView.swift in Sources */,
 				90E3D80423D8CC5D009C764C /* SceneDelegate.swift in Sources */,
 			);
