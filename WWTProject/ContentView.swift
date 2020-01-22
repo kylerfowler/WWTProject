@@ -10,7 +10,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            ContentView()
+           // CourseView()
+           
+            /*
+             if works = true {
+             made by Ryan
+                else {
+             made by Kyle
+             */
+
+        }
     }
 }
 
