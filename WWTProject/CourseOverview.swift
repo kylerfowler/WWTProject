@@ -9,10 +9,24 @@
 import SwiftUI
 
 struct CourseOverview: View {
+    @Environment(\.colorScheme) var colorScheme
     var course: Course
     
     init(_ course: Course) {
         self.course = course
+    }
+    
+    var backgroundColor: Color {
+        switch colorScheme {
+            case .dark:
+                return Color(.secondarySystemBackground)
+                
+            case .light:
+                return Color.white
+            
+            @unknown default:
+                fatalError()
+        }
     }
     
     var body: some View {
@@ -27,9 +41,9 @@ struct CourseOverview: View {
         }
         .padding()
         .background(
-            Color(.secondarySystemBackground)
+            backgroundColor
                 .cornerRadius(8)
-                .shadow(radius: 8)
+                .shadow(radius: 4)
         )
     }
 }
@@ -40,6 +54,6 @@ struct CourseOverview_Previews: PreviewProvider {
                               teacher: "Hampton",
                               students: [Student(name: "Ryan Monahan"),
                                          Student(name: "Kyle Folwer")]
-                              )).padding()
+            )).padding()
     }
 }
