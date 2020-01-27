@@ -21,7 +21,7 @@ class CourseStore: ObservableObject {
                    Course(name: "Personal Finance",
                           teacher: "Kasey Roberts",
                           students: []),
-                   Course(name: "Religion",
+                   Course(name: "Vocations",
                           teacher: "Denise Bossert",
                           students: []),
                    Course(name: "Physics 2",
