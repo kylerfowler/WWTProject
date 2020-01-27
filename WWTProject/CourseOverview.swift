@@ -40,11 +40,9 @@ struct CourseOverview: View {
                 .foregroundColor(.gray)
         }
         .padding()
-        .background(
-            backgroundColor
-                .cornerRadius(8)
-                .shadow(radius: 4)
-        )
+        .background(backgroundColor)
+        .cornerRadius(8)
+        .shadow(radius: 4)
     }
 }
 
