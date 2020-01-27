@@ -13,22 +13,22 @@ class CourseStore: ObservableObject {
     
     func fetchCourses() {
         courses = [Course(name: "Calculus",
-                          teacher: "Lennett Hampton",
+                          teacher: "Lennett Hampton", description: "", review: "",
                           students: []),
                    Course(name: "Cyber Security",
-                          teacher: "Kristy Hagan",
+                          teacher: "Kristy Hagan", description: "", review: "",
                           students: []),
                    Course(name: "Personal Finance",
-                          teacher: "Kasey Roberts",
+                          teacher: "Kasey Roberts", description: "", review: "",
                           students: []),
                    Course(name: "Vocations",
-                          teacher: "Denise Bossert",
+                          teacher: "Denise Bossert", description: "", review: "",
                           students: []),
                    Course(name: "Physics 2",
-                          teacher: "Joe Groaning",
+                          teacher: "Joe Groaning", description: "", review: "",
                           students: []),
                    Course(name: "British Literature",
-                          teacher: "Denise Bossert",
+                          teacher: "Denise Bossert", description: "", review: "",
                           students: [])]
     }
 }

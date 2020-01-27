@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38DD4FC723DF8A93006DC4CC /* DestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD4FC623DF8A93006DC4CC /* DestinationView.swift */; };
 		90E3D80223D8CC5D009C764C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D80123D8CC5D009C764C /* AppDelegate.swift */; };
 		90E3D80423D8CC5D009C764C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D80323D8CC5D009C764C /* SceneDelegate.swift */; };
 		90E3D80723D8CC5D009C764C /* WWTProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D80523D8CC5D009C764C /* WWTProject.xcdatamodeld */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38DD4FC623DF8A93006DC4CC /* DestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationView.swift; sourceTree = "<group>"; };
 		90E3D7FE23D8CC5D009C764C /* Torch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Torch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E3D80123D8CC5D009C764C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E3D80323D8CC5D009C764C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				90E3D80823D8CC5D009C764C /* ContentView.swift */,
 				90E3D81B23D8D3A4009C764C /* CourseOverview.swift */,
 				90E3D81923D8D14C009C764C /* Course.swift */,
+				38DD4FC623DF8A93006DC4CC /* DestinationView.swift */,
 				90E3D81D23D8F8D6009C764C /* CourseStore.swift */,
 				90E3D80A23D8CC66009C764C /* Assets.xcassets */,
 				90E3D80F23D8CC66009C764C /* LaunchScreen.storyboard */,
@@ -163,6 +166,7 @@
 				90E3D80223D8CC5D009C764C /* AppDelegate.swift in Sources */,
 				90E3D81E23D8F8D6009C764C /* CourseStore.swift in Sources */,
 				90E3D81A23D8D14C009C764C /* Course.swift in Sources */,
+				38DD4FC723DF8A93006DC4CC /* DestinationView.swift in Sources */,
 				90E3D80923D8CC5D009C764C /* ContentView.swift in Sources */,
 				90E3D80423D8CC5D009C764C /* SceneDelegate.swift in Sources */,
 			);

@@ -13,6 +13,8 @@ struct Course: Identifiable {
     
     var name: String
     var teacher: String
+    var description: String
+    var review: String
     var students: [Student]
 }
 

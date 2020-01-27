@@ -49,7 +49,7 @@ struct CourseOverview: View {
 struct CourseOverview_Previews: PreviewProvider {
     static var previews: some View {
         CourseOverview(Course(name: "Calculus",
-                              teacher: "Hampton",
+                              teacher: "Hampton", description: "", review: "",
                               students: [Student(name: "Ryan Monahan"),
                                          Student(name: "Kyle Folwer")]
             )).padding()
