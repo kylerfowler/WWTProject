@@ -63,23 +63,17 @@ struct DestinationView: View {
                             .bold()
                             .underline()
                         HStack {
+                            ForEach(1...course.review.rating, id: \.self) { _ in
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.yellow)
+                                    .font(.system(size:25))
+                            }
                             
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.yellow)
-                                    .font(.system(size:25))
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.yellow)
-                                    .font(.system(size:25))
+                            ForEach(course.review.rating ..< 5, id: \.self) { _ in
                                 Image(systemName: "star")
                                     .foregroundColor(.yellow)
                                     .font(.system(size:25))
-                                Image(systemName: "star")
-                                    .foregroundColor(.yellow)
-                                    .font(.system(size:25))
-                                Image(systemName: "star")
-                                    .foregroundColor(.yellow)
-                                    .font(.system(size:25))
-
+                            }
                         }
                         Text(course.review.description)
                             .font(.system(size:20))
@@ -103,7 +97,7 @@ struct DestinationView_Previews: PreviewProvider {
                                                      teacher: "Lennett Hampton",
                                                      description: "A high level math class",
                                                      review: Review(description: "This class made me very angry.",
-                                                                    rating: 2,
+                                                                    rating: 3,
                                                                     name: "Ryan Monahan"),
                                                      students: []))
         }
