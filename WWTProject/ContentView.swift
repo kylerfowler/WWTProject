@@ -15,7 +15,7 @@ struct ContentView: View {
         NavigationView {
             ScrollView {
                 ForEach(store.courses) { course in
-                    NavigationLink(destination: Text("Course Destination")) {
+                    NavigationLink(destination: DestinationView(course: course)) {
                         CourseOverview(course)
                             .padding(.horizontal)
                             .padding(.vertical, 10)

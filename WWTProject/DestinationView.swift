@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct DestinationView: View {
-    @Binding var course: Course
+    var course: Course
     @Environment(\.colorScheme) var colorScheme
     
     var backgroundColor: Color {
@@ -28,38 +28,66 @@ struct DestinationView: View {
     
     var body: some View {
         ScrollView {
-                VStack {
-                    HStack {
-                        Text(course.teacher)
-                            .font(.system(size: 30))
-                            .padding(.horizontal)
+            VStack() {
+                    HStack{
+                        VStack(alignment: .leading){
+                            Text("Teacher")
+                                .font(.system(size: 20))
+                                .foregroundColor(.gray)
+                                .bold()
+                                .underline()
+                            Text(course.teacher)
+                                .foregroundColor(.black)
+                                .font(.system(size:20))
+                        }
+                        .padding()
                         Spacer()
                     }
                     HStack {
-                        Text(course.description)
-                            
-                            .padding(.horizontal)
+                        VStack(alignment: .leading){
+                            Text("Description")
+                                .font(.system(size: 20))
+                                .foregroundColor(.gray)
+                                .bold()
+                                .underline()
+                            Text(course.description)
+                                .foregroundColor(.black)
+                                .font(.system(size:20))
+                        }
+                        .padding()
                         Spacer()
                     }
-                        
-                    .padding()
-                    .background(backgroundColor)
-                    .cornerRadius(8)
-                    .shadow(radius: 4)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Class Reviews")
+                            .font(.system(size: 20))
+                            .foregroundColor(.gray)
+                            .bold()
+                            .underline()
+                        Text(course.review)
+                            .foregroundColor(.black)
+                            .font(.system(size:20))
+                    }
+                .padding()
+                Spacer()
+                }
             }
         }
         .navigationBarTitle(Text(course.name))
+    .navigationBarItems(trailing: NavigationLink(destination: Text("Message Board")) {
+        Text("Class Chat")
+    })
     }
 }
 
 struct DestinationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DestinationView(course: .constant(Course(name: "Calculus",
+            DestinationView(course: Course(name: "Calculus",
                                                      teacher: "Lennett Hampton",
-                                                     description: "This is a description",
+                                                     description: "A high level math class",
                                                      review: "This is a review",
-                                                     students: [])))
+                                                     students: []))
         }
     }
 }
