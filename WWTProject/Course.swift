@@ -14,7 +14,7 @@ struct Course: Identifiable {
     var name: String
     var teacher: String
     var description: String
-    var review: String
+    var review: Review
     var students: [Student]
 }
 
@@ -23,3 +23,12 @@ struct Student: Identifiable {
     
     var name: String
 }
+
+struct Review: Identifiable {
+    var id = UUID()
+    
+    var description: String
+    var rating: Int
+    var name: String
+}
+

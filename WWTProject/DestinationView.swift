@@ -37,7 +37,6 @@ struct DestinationView: View {
                                 .bold()
                                 .underline()
                             Text(course.teacher)
-                                .foregroundColor(.black)
                                 .font(.system(size:20))
                         }
                         .padding()
@@ -51,7 +50,6 @@ struct DestinationView: View {
                                 .bold()
                                 .underline()
                             Text(course.description)
-                                .foregroundColor(.black)
                                 .font(.system(size:20))
                         }
                         .padding()
@@ -65,32 +63,30 @@ struct DestinationView: View {
                             .bold()
                             .underline()
                         HStack {
+                            
                                 Image(systemName: "star.fill")
                                     .foregroundColor(.yellow)
                                     .font(.system(size:25))
                                 Image(systemName: "star.fill")
                                     .foregroundColor(.yellow)
                                     .font(.system(size:25))
-                                Image(systemName: "star.fill")
+                                Image(systemName: "star")
                                     .foregroundColor(.yellow)
                                     .font(.system(size:25))
-                                Image(systemName: "star.fill")
+                                Image(systemName: "star")
                                     .foregroundColor(.yellow)
                                     .font(.system(size:25))
-                                Image(systemName: "star.fill")
+                                Image(systemName: "star")
                                     .foregroundColor(.yellow)
                                     .font(.system(size:25))
+
                         }
-                        Text(course.review)
-                            .foregroundColor(.black)
+                        Text(course.review.description)
                             .font(.system(size:20))
                     }
-                    //.border(Color.black, width: 5)
                 .padding()
                 Spacer()
                 }
-                .border(Color.black, width: 5)
-                .padding(.horizontal)
             }
         }
         .navigationBarTitle(Text(course.name))
@@ -106,7 +102,9 @@ struct DestinationView_Previews: PreviewProvider {
             DestinationView(course: Course(name: "Calculus",
                                                      teacher: "Lennett Hampton",
                                                      description: "A high level math class",
-                                                     review: "Great Class!",
+                                                     review: Review(description: "This class made me very angry.",
+                                                                    rating: 2,
+                                                                    name: "Ryan Monahan"),
                                                      students: []))
         }
     }
