@@ -55,6 +55,7 @@ struct DestinationView: View {
                         .padding()
                         Spacer()
                     }
+                
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Class Reviews")
@@ -62,21 +63,30 @@ struct DestinationView: View {
                             .foregroundColor(.gray)
                             .bold()
                             .underline()
-                        HStack {
-                            ForEach(1...course.review.rating, id: \.self) { _ in
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.yellow)
-                                    .font(.system(size:25))
-                            }
+                            .padding(.vertical)
+                        VStack(alignment: .leading) {
+                            Text(course.review.name)
+                                .font(.system(size:20))
+                            HStack {
+                                ForEach(1...course.review.rating, id: \.self) { _ in
+                                    Image(systemName: "star.fill")
+                                        .foregroundColor(.yellow)
+                                        .font(.system(size:25))
+                                }
                             
-                            ForEach(course.review.rating ..< 5, id: \.self) { _ in
-                                Image(systemName: "star")
-                                    .foregroundColor(.yellow)
-                                    .font(.system(size:25))
+                                ForEach(course.review.rating ..< 5, id: \.self) { _ in
+                                    Image(systemName: "star")
+                                        .foregroundColor(.yellow)
+                                        .font(.system(size:25))
+                                }
                             }
+                            Text(course.review.description)
+                                .font(.system(size:20))
                         }
-                        Text(course.review.description)
-                            .font(.system(size:20))
+                    .padding()
+                    .background(backgroundColor)
+                    .cornerRadius(8)
+                    .shadow(radius: 4)
                     }
                 .padding()
                 Spacer()
@@ -97,7 +107,7 @@ struct DestinationView_Previews: PreviewProvider {
                                                      teacher: "Lennett Hampton",
                                                      description: "A high level math class",
                                                      review: Review(description: "This class made me very angry.",
-                                                                    rating: 3,
+                                                                    rating: 2,
                                                                     name: "Ryan Monahan"),
                                                      students: []))
         }
