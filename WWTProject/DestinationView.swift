@@ -28,7 +28,7 @@ struct DestinationView: View {
     
     var body: some View {
         ScrollView {
-            VStack() {
+            VStack(alignment: .leading) {
                     HStack{
                         VStack(alignment: .leading){
                             Text("Teacher")
@@ -39,7 +39,8 @@ struct DestinationView: View {
                             Text(course.teacher)
                                 .font(.system(size:20))
                         }
-                        .padding()
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
                         Spacer()
                     }
                     HStack {
@@ -52,10 +53,10 @@ struct DestinationView: View {
                             Text(course.description)
                                 .font(.system(size:20))
                         }
-                        .padding()
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
                         Spacer()
                     }
-                
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Class Reviews")
@@ -83,12 +84,13 @@ struct DestinationView: View {
                             Text(course.review.description)
                                 .font(.system(size:20))
                         }
-                    .padding()
+                        .padding()
                     .background(backgroundColor)
                     .cornerRadius(8)
                     .shadow(radius: 4)
                     }
-                .padding()
+                .padding(.horizontal)
+                .padding(.vertical, 1)
                 Spacer()
                 }
             }
