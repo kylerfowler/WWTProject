@@ -20,14 +20,14 @@ struct CircleButton<Destination: View>: View {
         NavigationLink(destination: destination) {
             VStack {
                 Image(systemName: symbol)
-                    .font(.system(size: 100))
+                    .font(.system(size: 70))
                     .foregroundColor(colorTheme)
-                    .padding()
+                    .padding(.vertical, 8)
                 Text(label)
+                    .font(.system(size: 17))
                     .foregroundColor(colorTheme)
-
+                    .multilineTextAlignment(.center)
             }
-            .frame(width: 150, height: 150)
         }
     }
 }
@@ -41,14 +41,18 @@ struct DestinationView: View {
         ScrollView {
             VStack {
                 HStack {
-                    CircleButton(colorTheme: Color.red, label: "Important Dates", symbol: "calendar.circle.fill", destination: ClassCalender())
-                    CircleButton(colorTheme: Color.green, label: "Group Message", symbol: "message.circle.fill", destination: Text("Group Message"))
-                }
-                HStack {
-                    CircleButton(colorTheme: Color.blue, label: "Class Information", symbol: "info.circle.fill", destination: ClassInfo(course: course))
-                    CircleButton(colorTheme: Color.yellow, label: "Tutor Center", symbol: "arrow.up.circle.fill", destination:Text("Tutor Center"))
+                    
+                    CircleButton(colorTheme: Color.red, label: "Dates", symbol: "calendar.circle.fill", destination: ClassCalender())
+                        .padding(.horizontal, 2)
+                    CircleButton(colorTheme: Color.green, label: "Message", symbol: "message.circle.fill", destination: Text("Group Message"))
+                        .padding(.horizontal, 2)
+                    CircleButton(colorTheme: Color.blue, label: "Info", symbol: "info.circle.fill", destination: ClassInfo(course: course))
+                        .padding(.horizontal, 2)
+                    CircleButton(colorTheme: Color.yellow, label: "Tutor", symbol: "arrow.up.circle.fill", destination:Text("Tutor Center"))
+                        .padding(.horizontal, 2)
                 }
             }
+        .padding()
         }
         .navigationBarTitle(Text(course.name))
     }
@@ -59,16 +63,7 @@ struct DestinationView: View {
 struct DestinationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DestinationView(course: Course(name: "Calculus",
-                                                     teacher: "Lennett Hampton",
-                                                     description: "A high level math class",
-                                                     reviews: [Review(description: "This class made me very angry.",
-                                                                      rating: 3,
-                                                                      name: "Ryan Monahan"),
-                                                               Review(description: "This class made me very angry.",
-                                                                              rating: 5,
-                                                                              name: "Ryan Monahan")],
-                                                               students: []))
+            DestinationView(course: .test)
         
         }
     }

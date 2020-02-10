@@ -73,16 +73,7 @@ struct ClassInfo: View {
 struct ClassInfo_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ClassInfo(course: Course(name: "Calculus",
-                                                     teacher: "Lennett Hampton",
-                                                     description: "A high level math class",
-                                                     reviews: [Review(description: "This class made me very angry.",
-                                                                      rating: 3,
-                                                                      name: "Ryan Monahan"),
-                                                               Review(description: "This class made me very angry.",
-                                                                              rating: 5,
-                                                                              name: "Ryan Monahan")],
-                                                               students: []))
+            ClassInfo(course: .test)
         }
     }
 }

@@ -26,7 +26,7 @@ struct InfoButton: View {
         }
     }
 }
-
+/*
 struct InfoButton_Previews: PreviewProvider {
     static var previews: some View {
         InfoButton(course: Course(name: "Calculus",
@@ -41,3 +41,4 @@ struct InfoButton_Previews: PreviewProvider {
                                   students: []))
     }
 }
+*/

@@ -48,7 +48,7 @@ struct CourseOverview: View {
         }
     }
 }
-
+/*
 struct CourseOverview_Previews: PreviewProvider {
     static var previews: some View {
         CourseOverview(Course(name: "Calculus",
@@ -65,3 +65,4 @@ struct CourseOverview_Previews: PreviewProvider {
         )).padding()
     }
 }
+ */
