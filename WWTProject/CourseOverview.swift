@@ -30,19 +30,22 @@ struct CourseOverview: View {
     }
     
     var body: some View {
-        VStack {
-            Text(course.name)
-                .font(.title)
-                .foregroundColor(.blue)
-            Divider()
-            Text(course.teacher)
-                .font(.subheadline)
-                .foregroundColor(.gray)
+        ZStack {
+            VStack {
+                Text(course.name)
+                    .font(.title)
+                    .foregroundColor(.blue)
+                Divider()
+                Text(course.teacher)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            .padding()
+            .background(backgroundColor)
+            .cornerRadius(8)
+            .shadow(radius: 4)
+            InfoButton(course: course)
         }
-        .padding()
-        .background(backgroundColor)
-        .cornerRadius(8)
-        .shadow(radius: 4)
     }
 }
 
@@ -51,11 +54,14 @@ struct CourseOverview_Previews: PreviewProvider {
         CourseOverview(Course(name: "Calculus",
                               teacher: "Hampton",
                               description: "",
-                              review: Review (description: "A Great Class!",
-                              rating: 4,
-                              name: "Ryan Monahan"),
+                              reviews: [Review(description: "This class made me very angry.",
+                                     rating: 3,
+                                     name: "Ryan Monahan"),
+                              Review(description: "This class made me very angry.",
+                                             rating: 5,
+                                             name: "Ryan Monahan")],
                               students: [Student(name: "Ryan Monahan"),
                                          Student(name: "Kyle Folwer")]
-            )).padding()
+        )).padding()
     }
 }

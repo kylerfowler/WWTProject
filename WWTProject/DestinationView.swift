@@ -6,101 +6,55 @@
 //  Copyright © 2020 Rob Fowler. All rights reserved.
 //
 
+
 import SwiftUI
+
+
+struct CircleButton<Destination: View>: View {
+    var colorTheme: Color
+    var label: String
+    var symbol: String
+    var destination: Destination
+    
+    var body: some View {
+        NavigationLink(destination: destination) {
+            VStack {
+                Image(systemName: symbol)
+                    .font(.system(size: 100))
+                    .foregroundColor(colorTheme)
+                    .padding()
+                Text(label)
+                    .foregroundColor(colorTheme)
+
+            }
+            .frame(width: 150, height: 150)
+        }
+    }
+}
+
 
 struct DestinationView: View {
     var course: Course
-    @Environment(\.colorScheme) var colorScheme
-    
-    var backgroundColor: Color {
-           switch colorScheme {
-               case .dark:
-                   return Color(.secondarySystemBackground)
-                   
-               case .light:
-                   return Color.white
-               
-               @unknown default:
-                   fatalError()
-           }
-       }
     
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
-                    HStack{
-                        VStack(alignment: .leading){
-                            Text("Teacher")
-                                .font(.system(size: 20))
-                                .foregroundColor(.gray)
-                                .bold()
-                                .underline()
-                            Text(course.teacher)
-                                .font(.system(size:20))
-                        }
-                        .padding(.horizontal)
-                        .padding(.vertical, 8)
-                        Spacer()
-                    }
-                    HStack {
-                        VStack(alignment: .leading){
-                            Text("Description")
-                                .font(.system(size: 20))
-                                .foregroundColor(.gray)
-                                .bold()
-                                .underline()
-                            Text(course.description)
-                                .font(.system(size:20))
-                        }
-                        .padding(.horizontal)
-                        .padding(.vertical, 8)
-                        Spacer()
-                    }
+            VStack {
                 HStack {
-                    VStack(alignment: .leading) {
-                        Text("Class Reviews")
-                            .font(.system(size: 20))
-                            .foregroundColor(.gray)
-                            .bold()
-                            .underline()
-                            .padding(.vertical)
-                        VStack(alignment: .leading) {
-                            Text(course.review.name)
-                                .font(.system(size:20))
-                            HStack {
-                                ForEach(1...course.review.rating, id: \.self) { _ in
-                                    Image(systemName: "star.fill")
-                                        .foregroundColor(.yellow)
-                                        .font(.system(size:25))
-                                }
-                            
-                                ForEach(course.review.rating ..< 5, id: \.self) { _ in
-                                    Image(systemName: "star")
-                                        .foregroundColor(.yellow)
-                                        .font(.system(size:25))
-                                }
-                            }
-                            Text(course.review.description)
-                                .font(.system(size:20))
-                        }
-                        .padding()
-                    .background(backgroundColor)
-                    .cornerRadius(8)
-                    .shadow(radius: 4)
-                    }
-                .padding(.horizontal)
-                .padding(.vertical, 1)
-                Spacer()
+                    CircleButton(colorTheme: Color.red, label: "Important Dates", symbol: "calendar.circle.fill", destination: ClassCalender())
+                    CircleButton(colorTheme: Color.green, label: "Group Message", symbol: "message.circle.fill", destination: Text("Group Message"))
+                }
+                HStack {
+                    CircleButton(colorTheme: Color.blue, label: "Class Information", symbol: "info.circle.fill", destination: ClassInfo(course: course))
+                    CircleButton(colorTheme: Color.yellow, label: "Tutor Center", symbol: "arrow.up.circle.fill", destination:Text("Tutor Center"))
                 }
             }
         }
         .navigationBarTitle(Text(course.name))
-    .navigationBarItems(trailing: NavigationLink(destination: Text("Message Board")) {
-        Text("Class Chat")
-    })
     }
 }
+
+
 
 struct DestinationView_Previews: PreviewProvider {
     static var previews: some View {
@@ -108,10 +62,15 @@ struct DestinationView_Previews: PreviewProvider {
             DestinationView(course: Course(name: "Calculus",
                                                      teacher: "Lennett Hampton",
                                                      description: "A high level math class",
-                                                     review: Review(description: "This class made me very angry.",
-                                                                    rating: 2,
-                                                                    name: "Ryan Monahan"),
-                                                     students: []))
+                                                     reviews: [Review(description: "This class made me very angry.",
+                                                                      rating: 3,
+                                                                      name: "Ryan Monahan"),
+                                                               Review(description: "This class made me very angry.",
+                                                                              rating: 5,
+                                                                              name: "Ryan Monahan")],
+                                                               students: []))
+        
         }
     }
 }
+

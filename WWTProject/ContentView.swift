@@ -15,11 +15,15 @@ struct ContentView: View {
         NavigationView {
             ScrollView {
                 ForEach(store.courses) { course in
-                    NavigationLink(destination: DestinationView(course: course)) {
-                        CourseOverview(course)
-                            .padding(.horizontal)
-                            .padding(.vertical, 10)
+                    ZStack {
+                        NavigationLink(destination: DestinationView(course: course)) {
+                            CourseOverview(course)
+                                
+                        }
+                        InfoButton(course: course)
                     }
+                    .padding(.horizontal)
+                    .padding(.vertical, 10)
                 }
             }
             .edgesIgnoringSafeArea(.bottom)
