@@ -13,24 +13,35 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                ForEach(store.courses) { course in
-                    ZStack {
-                        NavigationLink(destination: DestinationView(course: course)) {
-                            CourseOverview(course)
-                                
-                        }
-                        InfoButton(course: course)
+            ZStack {
+                if store.courses.isEmpty {
+                    VStack {
+                        Spacer()
+                        Text("Classes loading...")
+                        Spacer()
+                        Spacer()
                     }
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
+                }
+                
+                ScrollView {
+                    ForEach(store.courses) { course in
+                        ZStack {
+                            NavigationLink(destination: DestinationView(course: course)) {
+                                CourseOverview(course)
+                                    
+                            }
+                            InfoButton(course: course)
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, 10)
+                    }
                 }
             }
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle("Classes")
         }
         .onAppear {
-            self.store.fetchCourses()
+            self.store.fetch()
         }
     }
 }

@@ -14,7 +14,7 @@ struct ReviewView: View {
     var body: some View {
          
         VStack(alignment: .leading) {
-            Text(review.name)
+            Text(review.reviewerName)
                 .font(.system(size:20))
             HStack {
                 ForEach(1...review.rating, id: \.self) { _ in
@@ -40,6 +40,6 @@ struct ReviewView: View {
 
 struct ReviewView_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewView(review: Review(description: "Test Review Desc.", rating: 3, name: "Ryan"))
+        ReviewView(review: Review(description: "Test Review Desc.", rating: 3, reviewerName: "Ryan", date: Date()))
     }
 }

@@ -16,19 +16,6 @@ struct CourseOverview: View {
         self.course = course
     }
     
-    var backgroundColor: Color {
-        switch colorScheme {
-            case .dark:
-                return Color(.secondarySystemBackground)
-                
-            case .light:
-                return Color.white
-            
-            @unknown default:
-                fatalError()
-        }
-    }
-    
     var body: some View {
         ZStack {
             VStack {
@@ -41,11 +28,13 @@ struct CourseOverview: View {
                     .foregroundColor(.gray)
             }
             .padding()
-            .background(backgroundColor)
+            .background(Color(.secondarySystemBackground))
             .cornerRadius(8)
             .shadow(radius: 4)
-            InfoButton(course: course)
         }
+        .padding()
+        .background(Color(.secondarySystemBackground))
+        .cornerRadius(8)
     }
 }
 /*

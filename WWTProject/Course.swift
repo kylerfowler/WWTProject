@@ -7,9 +7,12 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct Course: Identifiable {
     var id = UUID()
+    
+    var recordID: CKRecord.ID?
     
     var name: String
     var teacher: String
@@ -35,6 +38,8 @@ struct Course: Identifiable {
 
 struct Student: Identifiable {
     var id = UUID()
+    
+    var recordID: CKRecord.ID?
     
     var name: String
 }

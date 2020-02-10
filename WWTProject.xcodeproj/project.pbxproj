@@ -22,6 +22,8 @@
 		90E3D81A23D8D14C009C764C /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D81923D8D14C009C764C /* Course.swift */; };
 		90E3D81C23D8D3A5009C764C /* CourseOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D81B23D8D3A4009C764C /* CourseOverview.swift */; };
 		90E3D81E23D8F8D6009C764C /* CourseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D81D23D8F8D6009C764C /* CourseStore.swift */; };
+		90E3D82623DF8DE9009C764C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E3D82523DF8DE9009C764C /* CloudKit.framework */; };
+		90E3D82923DF9028009C764C /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D82823DF9028009C764C /* CloudKitHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,9 @@
 		90E3D81923D8D14C009C764C /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		90E3D81B23D8D3A4009C764C /* CourseOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseOverview.swift; sourceTree = "<group>"; };
 		90E3D81D23D8F8D6009C764C /* CourseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseStore.swift; sourceTree = "<group>"; };
+		90E3D82523DF8DE9009C764C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		90E3D82723DF8E07009C764C /* Torch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Torch.entitlements; sourceTree = "<group>"; };
+		90E3D82823DF9028009C764C /* CloudKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90E3D82623DF8DE9009C764C /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +66,7 @@
 			children = (
 				90E3D80023D8CC5D009C764C /* WWTProject */,
 				90E3D7FF23D8CC5D009C764C /* Products */,
+				90E3D82423DF8DE9009C764C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +81,7 @@
 		90E3D80023D8CC5D009C764C /* WWTProject */ = {
 			isa = PBXGroup;
 			children = (
+				90E3D82723DF8E07009C764C /* Torch.entitlements */,
 				90E3D80123D8CC5D009C764C /* AppDelegate.swift */,
 				90E3D80323D8CC5D009C764C /* SceneDelegate.swift */,
 				90E3D80823D8CC5D009C764C /* ContentView.swift */,
@@ -85,6 +93,7 @@
 				38DD4FD323EF043B006DC4CC /* ClassCalender.swift */,
 				38DD4FCD23E4C47D006DC4CC /* ReviewView.swift */,
 				90E3D81D23D8F8D6009C764C /* CourseStore.swift */,
+				90E3D82823DF9028009C764C /* CloudKitHelper.swift */,
 				90E3D80A23D8CC66009C764C /* Assets.xcassets */,
 				90E3D80F23D8CC66009C764C /* LaunchScreen.storyboard */,
 				90E3D81223D8CC66009C764C /* Info.plist */,
@@ -100,6 +109,14 @@
 				90E3D80D23D8CC66009C764C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		90E3D82423DF8DE9009C764C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				90E3D82523DF8DE9009C764C /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +201,7 @@
 				38DD4FD623F1FD21006DC4CC /* ClassInfo.swift in Sources */,
 				90E3D80923D8CC5D009C764C /* ContentView.swift in Sources */,
 				38DD4FD423EF043B006DC4CC /* ClassCalender.swift in Sources */,
+				90E3D82923DF9028009C764C /* CloudKitHelper.swift in Sources */,
 				90E3D80423D8CC5D009C764C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,16 +338,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WWTProject/Torch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WWTProject/Preview Content\"";
-				DEVELOPMENT_TEAM = GQQV677MBD;
+				DEVELOPMENT_TEAM = M898C399G4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WWTProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.RobFowler.WWTProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RobFowler.Torch;
 				PRODUCT_NAME = Torch;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -340,16 +359,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WWTProject/Torch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WWTProject/Preview Content\"";
-				DEVELOPMENT_TEAM = GQQV677MBD;
+				DEVELOPMENT_TEAM = M898C399G4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WWTProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.RobFowler.WWTProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RobFowler.Torch;
 				PRODUCT_NAME = Torch;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

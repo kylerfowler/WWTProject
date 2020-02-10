@@ -11,7 +11,19 @@ import SwiftUI
 class CourseStore: ObservableObject {
     @Published var courses = [Course]()
     
-    func fetchCourses() {
+    func fetch() {
+        CloudKitHelper.fetch { result in
+            switch result {
+            case .success(let newCourse):
+                self.courses.append(newCourse)
+                print(newCourse)
+
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+        /*
         courses = [Course(name: "Calculus",
                           teacher: "Lennett Hampton",
                           description: "A high level math class",
@@ -73,4 +85,5 @@ class CourseStore: ObservableObject {
                                          name: "Ryan Monahan")],
                           students: [])]
     }
+ */
 }
