@@ -22,7 +22,7 @@ struct Course: Identifiable {
     var tutor: [Tutor] = []
     var tutee: [Tutee] = []
     var message: [Conversation] = []
-    var calendar: [Calendar] = []
+    var calendar: [Event] = []
     
     static var test = Course(name: "Calculus",
     teacher: "Lennett Hampton",
@@ -33,7 +33,8 @@ struct Course: Identifiable {
               Review(description: "This class made me very angry.",
                              rating: 5,
                              reviewerName: "Ryan Monahan", date: Date())],
-    students: [], tutor: [], tutee: [], message: [], calendar: [])
+    students: [], tutor: [], tutee: [], message: [],
+    calendar: [Event(date: Date(), name: "Calculus Test Over Chapter 3", subject: "Calculus", taskType: "Test")])
 }
 
 struct Student: Identifiable {
@@ -77,11 +78,11 @@ struct Conversation: Identifiable {
     var message: String
     
 }
-struct Calendar: Identifiable {
+struct Event: Identifiable {
     var id = UUID()
     
     var date: Date
-    var eventName: String
+    var name: String
     var subject: String
-    var tasktype: String
+    var taskType: String
 }

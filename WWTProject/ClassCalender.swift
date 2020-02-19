@@ -8,14 +8,95 @@
 
 import SwiftUI
 
-struct ClassCalender: View {
+struct ScheduleEntry: View {
+    
+    
+    static let taskDateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }()
+    
+    
+    var colorTheme: Color
+    var event: Event
+    var symbol: String
+    
     var body: some View {
-        Text("Upcoming Important Dates")
+        HStack {
+            Image(systemName: symbol)
+                .foregroundColor(colorTheme)
+                .font(.system(size: 60))
+                .padding(.vertical)
+            VStack {
+                Text(event.name)
+                    .foregroundColor(colorTheme)
+                    .font(.system(size:20))
+                    .bold()
+            }
+            Divider()
+            Text("\(event.date, formatter: Self.taskDateFormat)")
+                .foregroundColor(colorTheme)
+                .font(.system(size:20))
+                
+        }
+    }
+}
+
+
+
+
+struct ClassCalender: View {
+    
+    static let taskDateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }()
+    
+    var course: Course
+    
+    @ObservedObject var store = EventCalendar()
+    
+    var body: some View {
+        List {
+            ForEach(course.calendar) { event in
+                Group {
+                    if event.taskType == "test" {
+                        ScheduleEntry(colorTheme: .red, event: event, symbol: "pencil.circle.fill")
+                        
+                    } else if event.taskType == "Test" {
+                         ScheduleEntry(colorTheme: .red, event: event, symbol: "pencil.circle.fill")
+                        
+                    } else if event.taskType == "Project" {
+                        ScheduleEntry(colorTheme: .blue, event: event, symbol: "paperclip.circle.fill")
+                        
+                    } else if event.taskType == "project" {
+                        ScheduleEntry(colorTheme: .blue, event: event, symbol: "paperclip.circle.fill")
+                        
+                    } else if event.taskType == "Essay" {
+                        ScheduleEntry(colorTheme: .green, event: event, symbol: "doc.circle.fill")
+                    // if event.taskType = "essay"
+                    } else {
+                        ScheduleEntry(colorTheme: .green, event: event, symbol: "doc.circle.fill")
+                    }
+                }
+            }
+        }
+        .navigationBarTitle(Text("\(course.name) Schedule"))
+        .navigationBarItems(trailing:
+            NavigationLink(destination: AddEvent(course: .test,
+                                                 store: EventCalendar())) {
+            Text("Add Event")
+        })
+                    
     }
 }
 
 struct ClassCalender_Previews: PreviewProvider {
     static var previews: some View {
-        ClassCalender()
+        NavigationView {
+            ClassCalender(course: .test)
+        }
     }
 }

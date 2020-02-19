@@ -42,14 +42,12 @@ struct DestinationView: View {
             VStack {
                 HStack {
                     
-                    CircleButton(colorTheme: Color.red, label: "Dates", symbol: "calendar.circle.fill", destination: ClassCalender())
-                        .padding(.horizontal, 2)
-                    CircleButton(colorTheme: Color.green, label: "Message", symbol: "message.circle.fill", destination: Text("Group Message"))
-                        .padding(.horizontal, 2)
+                    CircleButton(colorTheme: Color.red, label: "Dates", symbol: "calendar.circle.fill", destination: ClassCalender(course: course))
+                        .padding(.horizontal, 3)
                     CircleButton(colorTheme: Color.blue, label: "Info", symbol: "info.circle.fill", destination: ClassInfo(course: course))
-                        .padding(.horizontal, 2)
-                    CircleButton(colorTheme: Color.yellow, label: "Tutor", symbol: "arrow.up.circle.fill", destination:Text("Tutor Center"))
-                        .padding(.horizontal, 2)
+                        .padding(.horizontal, 3)
+                    CircleButton(colorTheme: Color.yellow, label: "Tutor", symbol: "arrow.up.circle.fill", destination: TutorCenter(course: course))
+                        .padding(.horizontal, 3)
                 }
             }
         .padding()

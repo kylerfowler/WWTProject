@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		382B57C423F4A94E00522915 /* TutorCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382B57C323F4A94E00522915 /* TutorCenter.swift */; };
+		3871712523FC37B2004CC1FF /* AddReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3871712423FC37B2004CC1FF /* AddReview.swift */; };
+		3871712723FC38D6004CC1FF /* ReviewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3871712623FC38D6004CC1FF /* ReviewStore.swift */; };
+		3871712B23FC443E004CC1FF /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3871712A23FC443E004CC1FF /* Calendar.swift */; };
+		3871712D23FC452E004CC1FF /* AddEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3871712C23FC452E004CC1FF /* AddEvent.swift */; };
 		38DD4FC723DF8A93006DC4CC /* DestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD4FC623DF8A93006DC4CC /* DestinationView.swift */; };
 		38DD4FCE23E4C47D006DC4CC /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD4FCD23E4C47D006DC4CC /* ReviewView.swift */; };
 		38DD4FD223E8C8BF006DC4CC /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD4FD123E8C8BF006DC4CC /* InfoButton.swift */; };
@@ -27,6 +32,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		382B57C323F4A94E00522915 /* TutorCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorCenter.swift; sourceTree = "<group>"; };
+		3871712423FC37B2004CC1FF /* AddReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReview.swift; sourceTree = "<group>"; };
+		3871712623FC38D6004CC1FF /* ReviewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewStore.swift; sourceTree = "<group>"; };
+		3871712A23FC443E004CC1FF /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = ../../../Downloads/Calendar.swift; sourceTree = "<group>"; };
+		3871712C23FC452E004CC1FF /* AddEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEvent.swift; sourceTree = "<group>"; };
 		38DD4FC623DF8A93006DC4CC /* DestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationView.swift; sourceTree = "<group>"; };
 		38DD4FCD23E4C47D006DC4CC /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		38DD4FD123E8C8BF006DC4CC /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
@@ -88,9 +98,14 @@
 				38DD4FD123E8C8BF006DC4CC /* InfoButton.swift */,
 				90E3D81B23D8D3A4009C764C /* CourseOverview.swift */,
 				38DD4FD523F1FD21006DC4CC /* ClassInfo.swift */,
+				3871712423FC37B2004CC1FF /* AddReview.swift */,
 				90E3D81923D8D14C009C764C /* Course.swift */,
+				3871712623FC38D6004CC1FF /* ReviewStore.swift */,
 				38DD4FC623DF8A93006DC4CC /* DestinationView.swift */,
+				382B57C323F4A94E00522915 /* TutorCenter.swift */,
 				38DD4FD323EF043B006DC4CC /* ClassCalender.swift */,
+				3871712C23FC452E004CC1FF /* AddEvent.swift */,
+				3871712A23FC443E004CC1FF /* Calendar.swift */,
 				38DD4FCD23E4C47D006DC4CC /* ReviewView.swift */,
 				90E3D81D23D8F8D6009C764C /* CourseStore.swift */,
 				90E3D82823DF9028009C764C /* CloudKitHelper.swift */,
@@ -196,11 +211,16 @@
 				90E3D80223D8CC5D009C764C /* AppDelegate.swift in Sources */,
 				38DD4FD223E8C8BF006DC4CC /* InfoButton.swift in Sources */,
 				90E3D81E23D8F8D6009C764C /* CourseStore.swift in Sources */,
+				3871712D23FC452E004CC1FF /* AddEvent.swift in Sources */,
 				90E3D81A23D8D14C009C764C /* Course.swift in Sources */,
+				382B57C423F4A94E00522915 /* TutorCenter.swift in Sources */,
 				38DD4FC723DF8A93006DC4CC /* DestinationView.swift in Sources */,
 				38DD4FD623F1FD21006DC4CC /* ClassInfo.swift in Sources */,
 				90E3D80923D8CC5D009C764C /* ContentView.swift in Sources */,
+				3871712723FC38D6004CC1FF /* ReviewStore.swift in Sources */,
+				3871712523FC37B2004CC1FF /* AddReview.swift in Sources */,
 				38DD4FD423EF043B006DC4CC /* ClassCalender.swift in Sources */,
+				3871712B23FC443E004CC1FF /* Calendar.swift in Sources */,
 				90E3D82923DF9028009C764C /* CloudKitHelper.swift in Sources */,
 				90E3D80423D8CC5D009C764C /* SceneDelegate.swift in Sources */,
 			);
