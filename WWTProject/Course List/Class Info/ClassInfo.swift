@@ -12,6 +12,8 @@ struct ClassInfo: View {
     var course: Course
     @Environment(\.colorScheme) var colorScheme
     
+    @ObservedObject var store = ReviewStore()
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -55,11 +57,16 @@ struct ClassInfo: View {
                     .padding(.bottom, -20)
                     ScrollView(.horizontal) {
                         HStack {
-                            ForEach(course.reviews) { review in
-                                ReviewView(review: review)
-                                    .padding(.leading)
+                            ForEach(store.reviews) { review in
+                                VStack {
+                                    ReviewView(review: review)
+                                        .padding(.leading)
+                                }
                             }
                         }
+                    }
+                    .onAppear {
+                        self.store.fetch(courseRecordID: self.course.recordID!)
                     }
                 }
                 .navigationBarTitle(Text(course.name))
@@ -67,6 +74,7 @@ struct ClassInfo: View {
                 Text("Join Class")
             })
         }
+        
     }
 }
 

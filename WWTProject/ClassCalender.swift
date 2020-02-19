@@ -7,15 +7,26 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct ClassCalender: View {
+    @ObservedObject var calendar = EventCalendar()
+    
+    var courseRecordID: CKRecord.ID
+    
     var body: some View {
-        Text("Upcoming Important Dates")
+        List(calendar.events) { event in
+            Text(event.name)
+        }
+        .onAppear {
+            self.calendar.fetch(courseRecordID: self.courseRecordID)
+        }
     }
 }
-
+/*
 struct ClassCalender_Previews: PreviewProvider {
     static var previews: some View {
-        ClassCalender()
+        ClassCalender(courseRecordID: <#CKRecord.ID#>)
     }
 }
+ */

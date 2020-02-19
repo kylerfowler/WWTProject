@@ -42,7 +42,7 @@ struct DestinationView: View {
             VStack {
                 HStack {
                     
-                    CircleButton(colorTheme: Color.red, label: "Dates", symbol: "calendar.circle.fill", destination: ClassCalender())
+                    CircleButton(colorTheme: Color.red, label: "Dates", symbol: "calendar.circle.fill", destination: ClassCalender(courseRecordID: course.recordID!))
                         .padding(.horizontal, 2)
                     CircleButton(colorTheme: Color.green, label: "Message", symbol: "message.circle.fill", destination: Text("Group Message"))
                         .padding(.horizontal, 2)
