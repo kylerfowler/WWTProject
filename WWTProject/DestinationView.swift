@@ -62,7 +62,6 @@ struct DestinationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             DestinationView(course: .test)
-        
         }
     }
 }

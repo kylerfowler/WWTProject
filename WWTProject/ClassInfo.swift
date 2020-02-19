@@ -11,7 +11,7 @@ import SwiftUI
 struct ClassInfo: View {
     var course: Course
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var reviewStore = ReviewStore()
+    @ObservedObject var store = ReviewStore()
     
     var body: some View {
         ScrollView {
@@ -56,20 +56,18 @@ struct ClassInfo: View {
                     .padding(.bottom, -20)
                     ScrollView(.horizontal) {
                         HStack {
-                            ForEach(reviewStore.reviews) { review in
+                            ForEach(store.reviews) { review in
                                 ReviewView(review: review)
                                     .padding(.leading)
                             }
                         }
-                    }.onAppear{
-                        self.reviewStore.fetch(courseRecordID: self.course.recordID)
                     }
                     .onAppear {
                         self.store.fetch(courseRecordID: self.course.recordID!)
                     }
                 }
                 .navigationBarTitle(Text(course.name))
-            .navigationBarItems(trailing: NavigationLink(destination: AddReview(store: ReviewStore())) {
+            .navigationBarItems(trailing: NavigationLink(destination: AddReview(store: ReviewStore(), courseRecordID: course.recordID!)) {
                 Text("Add Review")
             })
         }

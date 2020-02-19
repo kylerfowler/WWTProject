@@ -1,15 +1,15 @@
 //
-//  Calendar.swift
+//  ReviewStore.swift
 //  WWTProject
 //
-//  Created by Kyle Fowler on 2/13/20.
+//  Created by Kyle Fowler on 2/18/20.
 //  Copyright © 2020 Rob Fowler. All rights reserved.
 //
 
 import SwiftUI
 import CloudKit
 
-class EventCalendar: ObservableObject {
+class EventStore: ObservableObject {
     @Published var events = [Event]()
     
     func fetch(courseRecordID: CKRecord.ID) {
@@ -37,4 +37,5 @@ class EventCalendar: ObservableObject {
             }
         }
     }
+
 }

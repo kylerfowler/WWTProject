@@ -7,10 +7,13 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct AddReview: View {
     @ObservedObject var store: ReviewStore
     @Environment(\.presentationMode) var presentation
+    
+    var courseRecordID: CKRecord.ID
     
     @State var reviewerName = ""
     @State var description = ""
@@ -31,10 +34,13 @@ struct AddReview: View {
                .listStyle(GroupedListStyle())
                .navigationBarTitle(Text("Review"))
                .navigationBarItems(trailing: Button(action: {
-                self.store.save(Review(description: self.description,
-                                                 rating: self.rating ?? 1,
-                                                    reviewerName: self.reviewerName,
-                                                    date: Date()))
+                
+                self.store.save(Review(recordID: nil,
+                                       description: self.description,
+                                       rating: self.rating ?? 1,
+                                       reviewerName: self.reviewerName,
+                                       date: Date()),
+                                courseRecordID: self.courseRecordID)
                 
                     self.presentation.wrappedValue.dismiss()
                }){
@@ -48,7 +54,7 @@ struct AddReview: View {
 struct AddReview_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddReview(store: ReviewStore())
+            AddReview(store: ReviewStore(), courseRecordID: CKRecord.ID())
         }
     }
 }

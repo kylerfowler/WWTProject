@@ -57,22 +57,16 @@ struct ClassCalender: View {
     
     var course: Course
     
-    @ObservedObject var store = EventCalendar()
+    @ObservedObject var store = EventStore()
     
     var body: some View {
         List {
-            ForEach(course.calendar) { event in
+            ForEach(store.events) { event in
                 Group {
-                    if event.taskType == "test" {
+                    if event.taskType == "test" || event.taskType == "Test" {
                         ScheduleEntry(colorTheme: .red, event: event, symbol: "pencil.circle.fill")
                         
-                    } else if event.taskType == "Test" {
-                         ScheduleEntry(colorTheme: .red, event: event, symbol: "pencil.circle.fill")
-                        
-                    } else if event.taskType == "Project" {
-                        ScheduleEntry(colorTheme: .blue, event: event, symbol: "paperclip.circle.fill")
-                        
-                    } else if event.taskType == "project" {
+                    } else if event.taskType == "Project" || event.taskType == "project" {
                         ScheduleEntry(colorTheme: .blue, event: event, symbol: "paperclip.circle.fill")
                         
                     } else if event.taskType == "Essay" {
@@ -85,14 +79,16 @@ struct ClassCalender: View {
             }
         }
         .navigationBarTitle(Text("\(course.name) Schedule"))
+            /*
         .navigationBarItems(trailing:
-            NavigationLink(destination: AddEvent(course: .test,
-                                                 store: EventCalendar())) {
+            NavigationLink(destination: AddEvent(course: self.course, store: self.store)) {
             Text("Add Event")
         })
-                    
+         */
+        
     }
 }
+
 /*
 struct ClassCalender_Previews: PreviewProvider {
     static var previews: some View {

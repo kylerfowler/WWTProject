@@ -65,18 +65,6 @@ struct Course: Identifiable, Convertable {
                              name: "Calculus",
                              teacher: "Lennett Hampton",
                              description: "A high level math class")
-    
-    static var test = Course(name: "Calculus",
-    teacher: "Lennett Hampton",
-    description: "A high level math class",
-    reviews: [Review(description: "This class made me very angry.",
-                     rating: 3,
-                     reviewerName: "Ryan Monahan", date: Date()),
-              Review(description: "This class made me very angry.",
-                             rating: 5,
-                             reviewerName: "Ryan Monahan", date: Date())],
-    students: [], tutor: [], tutee: [], message: [],
-    calendar: [Event(date: Date(), name: "Calculus Test Over Chapter 3", subject: "Calculus", taskType: "Test")])
 }
 
 struct Student: Identifiable {
