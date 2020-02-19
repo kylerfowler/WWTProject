@@ -17,10 +17,10 @@
 		38DD4FD223E8C8BF006DC4CC /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD4FD123E8C8BF006DC4CC /* InfoButton.swift */; };
 		38DD4FD423EF043B006DC4CC /* ClassCalender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD4FD323EF043B006DC4CC /* ClassCalender.swift */; };
 		38DD4FD623F1FD21006DC4CC /* ClassInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD4FD523F1FD21006DC4CC /* ClassInfo.swift */; };
+		907A0B7D23F5D884001BE2F3 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907A0B7C23F5D884001BE2F3 /* Calendar.swift */; };
 		90E3D80223D8CC5D009C764C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D80123D8CC5D009C764C /* AppDelegate.swift */; };
 		90E3D80423D8CC5D009C764C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D80323D8CC5D009C764C /* SceneDelegate.swift */; };
 		90E3D80723D8CC5D009C764C /* WWTProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D80523D8CC5D009C764C /* WWTProject.xcdatamodeld */; };
-		90E3D80923D8CC5D009C764C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D80823D8CC5D009C764C /* ContentView.swift */; };
 		90E3D80B23D8CC66009C764C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E3D80A23D8CC66009C764C /* Assets.xcassets */; };
 		90E3D80E23D8CC66009C764C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E3D80D23D8CC66009C764C /* Preview Assets.xcassets */; };
 		90E3D81123D8CC66009C764C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90E3D80F23D8CC66009C764C /* LaunchScreen.storyboard */; };
@@ -29,6 +29,8 @@
 		90E3D81E23D8F8D6009C764C /* CourseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D81D23D8F8D6009C764C /* CourseStore.swift */; };
 		90E3D82623DF8DE9009C764C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E3D82523DF8DE9009C764C /* CloudKit.framework */; };
 		90E3D82923DF9028009C764C /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D82823DF9028009C764C /* CloudKitHelper.swift */; };
+		90E3D87123F49507009C764C /* CourseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D87023F49507009C764C /* CourseList.swift */; };
+		90EA7BD623FC45F5002E4279 /* ReviewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA7BD523FC45F5002E4279 /* ReviewStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,11 +44,11 @@
 		38DD4FD123E8C8BF006DC4CC /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		38DD4FD323EF043B006DC4CC /* ClassCalender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassCalender.swift; sourceTree = "<group>"; };
 		38DD4FD523F1FD21006DC4CC /* ClassInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassInfo.swift; sourceTree = "<group>"; };
+		907A0B7C23F5D884001BE2F3 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		90E3D7FE23D8CC5D009C764C /* Torch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Torch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E3D80123D8CC5D009C764C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E3D80323D8CC5D009C764C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		90E3D80623D8CC5D009C764C /* WWTProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WWTProject.xcdatamodel; sourceTree = "<group>"; };
-		90E3D80823D8CC5D009C764C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		90E3D80A23D8CC66009C764C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90E3D80D23D8CC66009C764C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		90E3D81023D8CC66009C764C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +59,8 @@
 		90E3D82523DF8DE9009C764C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		90E3D82723DF8E07009C764C /* Torch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Torch.entitlements; sourceTree = "<group>"; };
 		90E3D82823DF9028009C764C /* CloudKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
+		90E3D87023F49507009C764C /* CourseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseList.swift; sourceTree = "<group>"; };
+		90EA7BD523FC45F5002E4279 /* ReviewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +98,9 @@
 				90E3D82723DF8E07009C764C /* Torch.entitlements */,
 				90E3D80123D8CC5D009C764C /* AppDelegate.swift */,
 				90E3D80323D8CC5D009C764C /* SceneDelegate.swift */,
-				90E3D80823D8CC5D009C764C /* ContentView.swift */,
-				38DD4FD123E8C8BF006DC4CC /* InfoButton.swift */,
+				90E3D87023F49507009C764C /* CourseList.swift */,
 				90E3D81B23D8D3A4009C764C /* CourseOverview.swift */,
+				38DD4FD123E8C8BF006DC4CC /* InfoButton.swift */,
 				38DD4FD523F1FD21006DC4CC /* ClassInfo.swift */,
 				3871712423FC37B2004CC1FF /* AddReview.swift */,
 				90E3D81923D8D14C009C764C /* Course.swift */,
@@ -107,7 +111,10 @@
 				3871712C23FC452E004CC1FF /* AddEvent.swift */,
 				3871712A23FC443E004CC1FF /* Calendar.swift */,
 				38DD4FCD23E4C47D006DC4CC /* ReviewView.swift */,
+				90E3D81923D8D14C009C764C /* Course.swift */,
 				90E3D81D23D8F8D6009C764C /* CourseStore.swift */,
+				90EA7BD523FC45F5002E4279 /* ReviewStore.swift */,
+				907A0B7C23F5D884001BE2F3 /* Calendar.swift */,
 				90E3D82823DF9028009C764C /* CloudKitHelper.swift */,
 				90E3D80A23D8CC66009C764C /* Assets.xcassets */,
 				90E3D80F23D8CC66009C764C /* LaunchScreen.storyboard */,
@@ -206,12 +213,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				90E3D80723D8CC5D009C764C /* WWTProject.xcdatamodeld in Sources */,
+				90EA7BD623FC45F5002E4279 /* ReviewStore.swift in Sources */,
 				38DD4FCE23E4C47D006DC4CC /* ReviewView.swift in Sources */,
 				90E3D81C23D8D3A5009C764C /* CourseOverview.swift in Sources */,
 				90E3D80223D8CC5D009C764C /* AppDelegate.swift in Sources */,
 				38DD4FD223E8C8BF006DC4CC /* InfoButton.swift in Sources */,
 				90E3D81E23D8F8D6009C764C /* CourseStore.swift in Sources */,
-				3871712D23FC452E004CC1FF /* AddEvent.swift in Sources */,
+				90E3D87123F49507009C764C /* CourseList.swift in Sources */,
 				90E3D81A23D8D14C009C764C /* Course.swift in Sources */,
 				382B57C423F4A94E00522915 /* TutorCenter.swift in Sources */,
 				38DD4FC723DF8A93006DC4CC /* DestinationView.swift in Sources */,

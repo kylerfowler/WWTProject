@@ -30,28 +30,14 @@ struct CourseOverview: View {
             .padding()
             .background(Color(.secondarySystemBackground))
             .cornerRadius(8)
-            .shadow(radius: 4)
         }
-        .padding()
-        .background(Color(.secondarySystemBackground))
-        .cornerRadius(8)
     }
 }
-/*
+
+
 struct CourseOverview_Previews: PreviewProvider {
     static var previews: some View {
-        CourseOverview(Course(name: "Calculus",
-                              teacher: "Hampton",
-                              description: "",
-                              reviews: [Review(description: "This class made me very angry.",
-                                     rating: 3,
-                                     name: "Ryan Monahan"),
-                              Review(description: "This class made me very angry.",
-                                             rating: 5,
-                                             name: "Ryan Monahan")],
-                              students: [Student(name: "Ryan Monahan"),
-                                         Student(name: "Kyle Folwer")]
-        )).padding()
+        CourseOverview(.test)
+            .padding()
     }
 }
- */

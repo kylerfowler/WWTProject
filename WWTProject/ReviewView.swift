@@ -40,6 +40,10 @@ struct ReviewView: View {
 
 struct ReviewView_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewView(review: Review(description: "Test Review Desc.", rating: 3, reviewerName: "Ryan", date: Date()))
+        ReviewView(review: Review(recordID: nil,
+                                  description: "Test Review Desc.",
+                                  rating: 3,
+                                  reviewerName: "Ryan",
+                                  date: Date()))
     }
 }

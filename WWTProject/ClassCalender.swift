@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct ScheduleEntry: View {
     
@@ -92,7 +93,7 @@ struct ClassCalender: View {
                     
     }
 }
-
+/*
 struct ClassCalender_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -100,3 +101,4 @@ struct ClassCalender_Previews: PreviewProvider {
         }
     }
 }
+ */

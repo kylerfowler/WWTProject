@@ -12,78 +12,28 @@ class CourseStore: ObservableObject {
     @Published var courses = [Course]()
     
     func fetch() {
-        CloudKitHelper.fetch { result in
+        courses = []
+        
+        CloudKitHelper<Course>.fetch { result in
             switch result {
             case .success(let newCourse):
                 self.courses.append(newCourse)
-                print(newCourse)
 
-            case .failure(let err):
-                print(err.localizedDescription)
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
-        /*
-        courses = [Course(name: "Calculus",
-                          teacher: "Lennett Hampton",
-                          description: "A high level math class",
-                          reviews: [Review(description: "This class made me very angry.",
-                                 rating: 3,
-                                 name: "Ryan Monahan"),
-                          Review(description: "This class made me very angry.",
-                                         rating: 5,
-                                         name: "Ryan Monahan")],
-                          students: []),
-                   Course(name: "Cyber Security",
-                          teacher: "Kristy Hagan",
-                          description: "",
-                          reviews: [Review(description: "This class made me very angry.",
-                                 rating: 3,
-                                 name: "Ryan Monahan"),
-                          Review(description: "This class made me very angry.",
-                                         rating: 5,
-                                         name: "Ryan Monahan")],
-                          students: []),
-                   Course(name: "Personal Finance",
-                          teacher: "Kasey Roberts",
-                          description: "",
-                          reviews: [Review(description: "This class made me very angry.",
-                                 rating: 3,
-                                 name: "Ryan Monahan"),
-                          Review(description: "This class made me very angry.",
-                                         rating: 5,
-                                         name: "Ryan Monahan")],
-                          students: []),
-                   Course(name: "Vocations",
-                          teacher: "Denise Bossert",
-                          description: "",
-                          reviews: [Review(description: "This class made me very angry.",
-                                 rating: 3,
-                                 name: "Ryan Monahan"),
-                          Review(description: "This class made me very angry.",
-                                         rating: 5,
-                                         name: "Ryan Monahan")],
-                          students: []),
-                   Course(name: "Physics 2",
-                          teacher: "Joe Groaning",
-                          description: "",
-                          reviews: [Review(description: "This class made me very angry.",
-                                 rating: 3,
-                                 name: "Ryan Monahan"),
-                          Review(description: "This class made me very angry.",
-                                         rating: 5,
-                                         name: "Ryan Monahan")],
-                          students: []),
-                   Course(name: "British Literature",
-                          teacher: "Denise Bossert",
-                          description: "",
-                          reviews: [Review(description: "This class made me very angry.",
-                                 rating: 3,
-                                 name: "Ryan Monahan"),
-                          Review(description: "This class made me very angry.",
-                                         rating: 5,
-                                         name: "Ryan Monahan")],
-                          students: [])]
+    
+    func save(_ course: Course) {
+        CloudKitHelper.save(course) { result in
+            switch result {
+            case .success(let newCourse):
+                self.courses.append(newCourse)
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
- */
 }

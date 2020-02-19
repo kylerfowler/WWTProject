@@ -20,13 +20,19 @@ import SwiftUI
 //
 // On your device (or in the simulator) you should make sure you are logged into iCloud and have iCloud Drive enabled.
 
-struct CloudKitHelper {
+protocol Convertable {
+    static var RecordType: String { get }
     
-    // MARK: - record types
-    struct RecordType {
-        static let Course = "Course"
-    }
+    var recordID: CKRecord.ID? { get set }
     
+    init?(from record: CKRecord)
+    
+    func convertToRecord() -> CKRecord
+    
+    func modify(_ record: CKRecord)
+}
+
+struct CloudKitHelper<Item: Convertable> {
     // MARK: - errors
     enum CloudKitHelperError: Error {
         case recordFailure
@@ -36,78 +42,56 @@ struct CloudKitHelper {
     }
     
     // MARK: - saving to CloudKit
-    static func save(course: Course, completion: @escaping (Result<Course, Error>) -> ()) {
-        let record = CKRecord(recordType: RecordType.Course)
+    static func save(_ item: Item, courseRecordID: CKRecord.ID? = nil, completion: @escaping (Result<Item, Error>) -> ()) {
+        let record = item.convertToRecord()
+        if let courseRecordID = courseRecordID {
+            let courseReference = CKRecord.Reference(recordID: courseRecordID, action: .none)
+            record["course"] = courseReference as CKRecordValue
+        }
         
-        record["name"] = course.name as CKRecordValue
-        record["teacher"] = course.teacher as CKRecordValue
-        
-        CKContainer.default().publicCloudDatabase.save(record) { (record, err) in
+        CKContainer.default().publicCloudDatabase.save(record) { (record, error) in
             DispatchQueue.main.async {
-                if let err = err {
-                    completion(.failure(err))
+                if let error = error {
+                    completion(.failure(error))
                     return
                 }
+                
                 guard let record = record else {
                     completion(.failure(CloudKitHelperError.recordFailure))
                     return
                 }
                 
-                let recordID = record.recordID
-                
-                guard let name = record["name"] as? String else {
-                    completion(.failure(CloudKitHelperError.castFailure))
-                    return
-                }
-                guard let teacher = record["teacher"] as? String else {
-                    completion(.failure(CloudKitHelperError.castFailure))
-                    return
-                }
-                guard let students = record["students"] as? [Student] else {
+                guard let item = Item(from: record) else {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
                 }
                 
-                let course = Course(recordID: recordID,
-                                    name: name,
-                                    teacher: teacher, description: "Test",
-                                    students: students)
-                
-                completion(.success(course))
+                completion(.success(item))
             }
         }
     }
     
     // MARK: - fetching from CloudKit
-    static func fetch(completion: @escaping (Result<Course, Error>) -> ()) {
-        let pred = NSPredicate(value: true)
-        //let sort = NSSortDescriptor(key: "creationDate", ascending: false)
-        // Maybe not right
+    static func fetch(courseRecordID: CKRecord.ID? = nil, completion: @escaping (Result<Item, Error>) -> ()) {
         
-        let query = CKQuery(recordType: RecordType.Course, predicate: pred)
+        var predicate = NSPredicate(value: true)
+        
+        if let courseRecordID = courseRecordID {
+            let courseReference = CKRecord.Reference(recordID: courseRecordID, action: .none)
+            predicate = NSPredicate(format: "course == %@", courseReference)
+        }
+        //let sort = NSSortDescriptor(key: "creationDate", ascending: false)
+        
+        let query = CKQuery(recordType: Item.RecordType, predicate: predicate)
         //query.sortDescriptors = [sort]
 
         let operation = CKQueryOperation(query: query)
-        operation.desiredKeys = ["name", "teacher"]
-        
-        operation.resultsLimit = 50
         
         operation.recordFetchedBlock = { record in
             DispatchQueue.main.async {
-                let recordID = record.recordID
+                guard let item = Item(from: record) else { return }
                 
-                guard let name = record["name"] as? String else { return }
-                
-                guard let teacher = record["teacher"] as? String else { return }
-                
-                //guard let students = record["students"] as? [Student] else { return }
-                
-                let course = Course(recordID: recordID,
-                                    name: name,
-                                    teacher: teacher, description: "Test",
-                                    students: [])
-                
-                completion(.success(course))
+                completion(.success(item))
             }
         }
         
@@ -137,6 +121,7 @@ struct CloudKitHelper {
                     completion(.failure(err))
                     return
                 }
+                
                 guard let recordID = recordID else {
                     completion(.failure(CloudKitHelperError.recordIDFailure))
                     return
@@ -147,55 +132,41 @@ struct CloudKitHelper {
     }
     
     // MARK: - modify in CloudKit
-    static func modify(course: Course, completion: @escaping (Result<Course, Error>) -> ()) {
-        guard let recordID = course.recordID else { return }
-        CKContainer.default().publicCloudDatabase.fetch(withRecordID: recordID) { record, err in
-            if let err = err {
+    static func modify(_ item: Item, completion: @escaping (Result<Item, Error>) -> ()) {
+        guard let recordID = item.recordID else { return }
+        CKContainer.default().publicCloudDatabase.fetch(withRecordID: recordID) { record, error in
+            if let error = error {
                 DispatchQueue.main.async {
-                    completion(.failure(err))
-                }
-                return
-            }
-            guard let record = record else {
-                DispatchQueue.main.async {
-                    completion(.failure(CloudKitHelperError.recordFailure))
+                    completion(.failure(error))
                 }
                 return
             }
             
-            record["name"] = course.name as CKRecordValue
-            record["teacher"] = course.teacher as CKRecordValue
+            guard let record = record else {
+                completion(.failure(CloudKitHelperError.recordFailure))
+                return
+            }
+            
+            item.modify(record)
 
-            CKContainer.default().publicCloudDatabase.save(record) { (record, err) in
+            CKContainer.default().publicCloudDatabase.save(record) { (record, error) in
                 DispatchQueue.main.async {
-                    if let err = err {
-                        completion(.failure(err))
+                    if let error = error {
+                        completion(.failure(error))
                         return
                     }
+                    
                     guard let record = record else {
                         completion(.failure(CloudKitHelperError.recordFailure))
                         return
                     }
                     
-                    let recordID = record.recordID
-                    
-                    guard let name = record["name"] as? String else {
-                        completion(.failure(CloudKitHelperError.castFailure))
-                        return
-                    }
-                    guard let teacher = record["teacher"] as? String else {
+                    guard let item = Item(from: record) else {
                         completion(.failure(CloudKitHelperError.castFailure))
                         return
                     }
                     
-                
-                    
-                    let course = Course(recordID: recordID,
-                                        name: name,
-                                        teacher: teacher, description: "Test",
-                                        students: [])
-                    
-                    completion(.success(course))
+                    completion(.success(item))
                 }
             }
         }

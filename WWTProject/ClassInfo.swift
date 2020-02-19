@@ -64,6 +64,9 @@ struct ClassInfo: View {
                     }.onAppear{
                         self.reviewStore.fetch(courseRecordID: self.course.recordID)
                     }
+                    .onAppear {
+                        self.store.fetch(courseRecordID: self.course.recordID!)
+                    }
                 }
                 .navigationBarTitle(Text(course.name))
             .navigationBarItems(trailing: NavigationLink(destination: AddReview(store: ReviewStore())) {
