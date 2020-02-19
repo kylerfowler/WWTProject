@@ -44,8 +44,11 @@ struct ScheduleEntry: View {
     }
 }
 
-
-
+enum TaskType: String {
+    case test = "Test"
+    case essay = "Essay"
+    case product = "Product"
+}
 
 struct ClassCalender: View {
     
@@ -57,7 +60,7 @@ struct ClassCalender: View {
     
     var course: Course
     
-    @ObservedObject var store = EventStore()
+    @EnvironmentObject var store: CourseStore
     
     var body: some View {
         List {
@@ -79,13 +82,67 @@ struct ClassCalender: View {
             }
         }
         .navigationBarTitle(Text("\(course.name) Schedule"))
-            /*
+        .onAppear {
+            DispatchQueue.main.async {
+                self.store.fetchEvents(courseRecordID: self.course.recordID!)
+            }
+        }
+        .onDisappear {
+            self.store.events = []
+        }
         .navigationBarItems(trailing:
-            NavigationLink(destination: AddEvent(course: self.course, store: self.store)) {
-            Text("Add Event")
+            NavigationLink(destination: AddCalendarEvent(course: self.course)) {
+                Text("Add Event")
         })
-         */
+    }
+}
+
+struct AddCalendarEvent: View {
+    var course: Course
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }
+    @EnvironmentObject var store: CourseStore
+    @Environment(\.presentationMode) var presentation
+    
+    @State var date = Date()
+    @State var name = ""
+    @State var subject = ""
+    @State var taskType = ""
+    
+    var body: some View {
+        Form {
+            HStack {
+                TextField("Name of Assignment", text: $name)
+            }
         
+            HStack {
+                TextField("Type of Assignment", text: $taskType)
+            }
+        
+            VStack {
+                DatePicker(selection: $date, in: Date()..., displayedComponents: .date) {
+                    Text("Date")
+                }
+            
+            }
+            .listStyle(GroupedListStyle())
+            .navigationBarTitle("Add Assignment")
+            .navigationBarItems(trailing: Button(action: {
+                 self.store.save(Event(recordID: nil,
+                                       date: self.date,
+                                       name: self.name,
+                                       subject: self.course.name,
+                                       taskType: self.taskType),
+                                 courseRecordID: self.course.recordID!)
+             
+                 self.presentation.wrappedValue.dismiss()
+            }){
+                 Text("Save")
+            })
+        }
     }
 }
 

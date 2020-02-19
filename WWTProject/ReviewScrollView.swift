@@ -7,10 +7,23 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct ReviewScrollView: View {
+    @EnvironmentObject var store: CourseStore
+    var courseRecordID: CKRecord.ID?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(store.reviews) { review in
+                    ReviewView(review: review)
+                        .padding(.leading)
+                }
+            }
+        }
+        
+        
     }
 }
 

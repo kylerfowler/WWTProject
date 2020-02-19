@@ -34,6 +34,7 @@ struct CircleButton<Destination: View>: View {
 
 
 struct DestinationView: View {
+    @EnvironmentObject var store: CourseStore
     var course: Course
     
     
@@ -50,7 +51,7 @@ struct DestinationView: View {
                         .padding(.horizontal, 3)
                 }
             }
-        .padding()
+            .padding()
         }
         .navigationBarTitle(Text(course.name))
     }

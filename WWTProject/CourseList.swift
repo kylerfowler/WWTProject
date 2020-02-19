@@ -32,6 +32,9 @@ struct CourseList: View {
                             }
                             InfoButton(course: course)
                         }
+                        .onAppear {
+                            self.store.fetchReviews(courseRecordID: course.recordID!)
+                        }
                         .padding(.horizontal)
                         .padding(.vertical, 10)
                     }
@@ -41,7 +44,7 @@ struct CourseList: View {
             .navigationBarTitle("Classes")
         }
         .onAppear {
-            self.store.fetch()
+            self.store.fetchCourses()
         }
     }
 }

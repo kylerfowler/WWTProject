@@ -7,11 +7,14 @@
 //
 
 import SwiftUI
+import CloudKit
 
 class CourseStore: ObservableObject {
     @Published var courses = [Course]()
+    @Published var reviews = [Review]()
+    @Published var events = [Event]()
     
-    func fetch() {
+    func fetchCourses() {
         courses = []
         
         CloudKitHelper<Course>.fetch { result in
@@ -30,6 +33,58 @@ class CourseStore: ObservableObject {
             switch result {
             case .success(let newCourse):
                 self.courses.append(newCourse)
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchReviews(courseRecordID: CKRecord.ID) {
+        reviews = []
+        
+        CloudKitHelper<Review>.fetch(courseRecordID: courseRecordID) { result in
+            switch result {
+            case .success(let newReview):
+                self.reviews.append(newReview)
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func save(_ review: Review, courseRecordID: CKRecord.ID) {
+        CloudKitHelper.save(review, courseRecordID: courseRecordID) { result in
+            switch result {
+            case .success(let newReview):
+                self.reviews.append(newReview)
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchEvents(courseRecordID: CKRecord.ID) {
+        events = []
+        
+        CloudKitHelper<Event>.fetch(courseRecordID: courseRecordID) { result in
+            switch result {
+            case .success(let newEvent):
+                self.events.append(newEvent)
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func save(_ event: Event, courseRecordID: CKRecord.ID) {
+        CloudKitHelper.save(event, courseRecordID: courseRecordID) { result in
+            switch result {
+            case .success(let newEvent):
+                self.events.append(newEvent)
 
             case .failure(let error):
                 print(error.localizedDescription)

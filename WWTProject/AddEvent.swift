@@ -15,7 +15,7 @@ struct AddEvent: View {
         formatter.dateStyle = .long
         return formatter
     }
-    @ObservedObject var store: EventStore
+    @EnvironmentObject var store: CourseStore
     @Environment(\.presentationMode) var presentation
     
     @State var date = Date()
@@ -63,7 +63,7 @@ struct AddEvent: View {
 struct AddEvent_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddEvent(course: .test, store: EventCalendar())
+            AddEvent(course: .test)
         }
     }
 }

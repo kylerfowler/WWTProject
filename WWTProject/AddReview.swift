@@ -10,7 +10,7 @@ import SwiftUI
 import CloudKit
 
 struct AddReview: View {
-    @ObservedObject var store: ReviewStore
+    @EnvironmentObject var store: CourseStore
     @Environment(\.presentationMode) var presentation
     
     var courseRecordID: CKRecord.ID
@@ -37,15 +37,14 @@ struct AddReview: View {
                 
                 self.store.save(Review(recordID: nil,
                                        description: self.description,
-                                       rating: self.rating ?? 1,
+                                       rating: self.rating ?? 3,
                                        reviewerName: self.reviewerName,
                                        date: Date()),
                                 courseRecordID: self.courseRecordID)
                 
                     self.presentation.wrappedValue.dismiss()
                }){
-                    Image(systemName: "plus.circle.fill")
-                       .font(.system(size: 25))
+                    Text("Save")
                })
         }
         }
@@ -54,7 +53,7 @@ struct AddReview: View {
 struct AddReview_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddReview(store: ReviewStore(), courseRecordID: CKRecord.ID())
+            AddReview(courseRecordID: CKRecord.ID())
         }
     }
 }
