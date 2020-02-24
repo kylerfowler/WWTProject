@@ -35,7 +35,7 @@ struct AddReview: View {
                     TextField("Rating: 1 - 5", value: $rating, formatter: NumberFormatter())
                 }
                .listStyle(GroupedListStyle())
-               .navigationBarTitle(Text("Review"))
+               .navigationBarTitle(Text("New Review"))
                .navigationBarItems(trailing: Button(action: {
                 
                 self.reviewStore.save(Review(recordID: nil,

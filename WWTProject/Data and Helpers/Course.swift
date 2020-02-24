@@ -159,13 +159,16 @@ struct Event: Identifiable, Convertable {
     var date: Date
     var name: String
     var subject: String
-    var taskType: String
+    var taskType: TaskType
     
     init?(from record: CKRecord) {
         guard let date = record["date"] as? Date else { return nil }
         guard let name = record["name"] as? String else { return nil }
         guard let subject = record["subject"] as? String else { return nil }
-        guard let taskType = record["taskType"] as? String else { return nil }
+        
+        guard let taskTypeString = record["taskType"] as? String else { return nil }
+        guard let taskType = TaskType(rawValue: taskTypeString) else { return nil }
+        
         
         self.init(recordID: record.recordID,
                   date: date,
@@ -174,7 +177,7 @@ struct Event: Identifiable, Convertable {
                   taskType: taskType)
     }
     
-    init(recordID: CKRecord.ID?, date: Date, name: String, subject: String, taskType: String) {
+    init(recordID: CKRecord.ID?, date: Date, name: String, subject: String, taskType: TaskType) {
         self.date = date
         self.name = name
         self.subject = subject
@@ -193,6 +196,6 @@ struct Event: Identifiable, Convertable {
         record["date"] = date as CKRecordValue
         record["name"] = name as CKRecordValue
         record["subject"] = subject as CKRecordValue
-        record["taskType"] = taskType as CKRecordValue
+        record["taskType"] = taskType.rawValue as CKRecordValue
     }
 }

@@ -21,7 +21,7 @@ struct AddCalendarEvent: View {
     @State var date = Date()
     @State var name = ""
     @State var subject = ""
-    @State var taskType = ""
+    @State var taskType = TaskType.project
     
     var body: some View {
         Form {
@@ -29,9 +29,12 @@ struct AddCalendarEvent: View {
                 TextField("Name of Assignment", text: $name)
             }
         
-            HStack {
-                TextField("Type of Assignment", text: $taskType)
+            Picker("Assignment Type", selection: $taskType) {
+                Text(TaskType.test.rawValue).tag(TaskType.test)
+                Text(TaskType.project.rawValue).tag(TaskType.project)
+                Text(TaskType.essay.rawValue).tag(TaskType.essay)
             }
+            .pickerStyle(SegmentedPickerStyle())
         
             VStack {
                 DatePicker(selection: $date, in: Date()..., displayedComponents: .date) {
@@ -40,7 +43,7 @@ struct AddCalendarEvent: View {
             
             }
             .listStyle(GroupedListStyle())
-            .navigationBarTitle("Add Assignment")
+            .navigationBarTitle("New Assignment")
             .navigationBarItems(trailing: Button(action: {
                  self.store.save(Event(recordID: nil,
                                        date: self.date,
@@ -59,6 +62,8 @@ struct AddCalendarEvent: View {
 
 struct AddCalendarEvent_Previews: PreviewProvider {
     static var previews: some View {
-        AddCalendarEvent(course: .test, store: EventStore())
+        NavigationView {
+            AddCalendarEvent(course: .test, store: EventStore())
+        }
     }
 }
