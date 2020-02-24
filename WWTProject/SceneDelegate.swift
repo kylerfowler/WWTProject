@@ -27,6 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let courseList = CourseList()
             .environment(\.managedObjectContext, context)
             .environmentObject(CourseStore())
+            .environmentObject(ReviewStore())
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

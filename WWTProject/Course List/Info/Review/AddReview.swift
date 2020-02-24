@@ -10,10 +10,13 @@ import SwiftUI
 import CloudKit
 
 struct AddReview: View {
-    @EnvironmentObject var store: CourseStore
     @Environment(\.presentationMode) var presentation
     
     var courseRecordID: CKRecord.ID
+    
+    @EnvironmentObject var reviewStore: ReviewStore
+    
+    //@ObservedObject var store: ReviewStore
     
     @State var reviewerName = ""
     @State var description = ""
@@ -35,7 +38,7 @@ struct AddReview: View {
                .navigationBarTitle(Text("Review"))
                .navigationBarItems(trailing: Button(action: {
                 
-                self.store.save(Review(recordID: nil,
+                self.reviewStore.save(Review(recordID: nil,
                                        description: self.description,
                                        rating: self.rating ?? 3,
                                        reviewerName: self.reviewerName,

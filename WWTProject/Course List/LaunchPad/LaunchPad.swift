@@ -9,31 +9,7 @@
 
 import SwiftUI
 
-
-struct CircleButton<Destination: View>: View {
-    var colorTheme: Color
-    var label: String
-    var symbol: String
-    var destination: Destination
-    
-    var body: some View {
-        NavigationLink(destination: destination) {
-            VStack {
-                Image(systemName: symbol)
-                    .font(.system(size: 70))
-                    .foregroundColor(colorTheme)
-                    .padding(.vertical, 8)
-                Text(label)
-                    .font(.system(size: 17))
-                    .foregroundColor(colorTheme)
-                    .multilineTextAlignment(.center)
-            }
-        }
-    }
-}
-
-
-struct DestinationView: View {
+struct LaunchPad: View {
     @EnvironmentObject var store: CourseStore
     var course: Course
     
@@ -45,7 +21,7 @@ struct DestinationView: View {
                     
                     CircleButton(colorTheme: Color.red, label: "Dates", symbol: "calendar.circle.fill", destination: ClassCalender(course: course))
                         .padding(.horizontal, 3)
-                    CircleButton(colorTheme: Color.blue, label: "Info", symbol: "info.circle.fill", destination: ClassInfo(course: course))
+                    CircleButton(colorTheme: Color.blue, label: "Info", symbol: "info.circle.fill", destination: CourseInfo(course: course))
                         .padding(.horizontal, 3)
                     CircleButton(colorTheme: Color.yellow, label: "Tutor", symbol: "arrow.up.circle.fill", destination: TutorCenter(course: course))
                         .padding(.horizontal, 3)
@@ -62,7 +38,7 @@ struct DestinationView: View {
 struct DestinationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DestinationView(course: .test)
+            LaunchPad(course: .test)
         }
     }
 }

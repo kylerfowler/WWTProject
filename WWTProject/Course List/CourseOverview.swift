@@ -17,20 +17,18 @@ struct CourseOverview: View {
     }
     
     var body: some View {
-        ZStack {
-            VStack {
-                Text(course.name)
-                    .font(.title)
-                    .foregroundColor(.blue)
-                Divider()
-                Text(course.teacher)
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-            }
-            .padding()
-            .background(Color(.secondarySystemBackground))
-            .cornerRadius(8)
+        VStack {
+            Text(course.name)
+                .font(.title)
+                .foregroundColor(.blue)
+            Divider()
+            Text(course.teacher)
+                .font(.subheadline)
+                .foregroundColor(.gray)
         }
+        .padding()
+        .background(Color(.secondarySystemBackground))
+        .cornerRadius(8)
     }
 }
 

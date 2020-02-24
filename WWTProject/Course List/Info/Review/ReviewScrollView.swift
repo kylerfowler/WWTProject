@@ -10,20 +10,18 @@ import SwiftUI
 import CloudKit
 
 struct ReviewScrollView: View {
-    @EnvironmentObject var store: CourseStore
-    var courseRecordID: CKRecord.ID?
+    //@ObservedObject var store: ReviewStore
+    @EnvironmentObject var reviewStore: ReviewStore
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(store.reviews) { review in
+                ForEach(reviewStore.reviews) { review in
                     ReviewView(review: review)
                         .padding(.leading)
                 }
             }
         }
-        
-        
     }
 }
 

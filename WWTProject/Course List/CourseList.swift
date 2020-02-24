@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CourseList: View {
     @EnvironmentObject var store: CourseStore
+    @EnvironmentObject var reviewStore: ReviewStore
     
     var body: some View {
         NavigationView {
@@ -26,17 +27,16 @@ struct CourseList: View {
                 ScrollView {
                     ForEach(store.courses) { course in
                         ZStack {
-                            NavigationLink(destination: DestinationView(course: course)) {
+                            NavigationLink(destination: LaunchPad(course: course)) {
                                 CourseOverview(course)
-                                    
                             }
                             InfoButton(course: course)
                         }
-                        .onAppear {
-                            self.store.fetchReviews(courseRecordID: course.recordID!)
-                        }
                         .padding(.horizontal)
                         .padding(.vertical, 10)
+                        .onAppear {
+                            self.reviewStore.fetch(courseRecordID: course.recordID!)
+                        }
                     }
                 }
             }
@@ -44,7 +44,7 @@ struct CourseList: View {
             .navigationBarTitle("Classes")
         }
         .onAppear {
-            self.store.fetchCourses()
+            self.store.fetch()
         }
     }
 }

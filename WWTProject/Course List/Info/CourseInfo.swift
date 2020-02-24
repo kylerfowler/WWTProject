@@ -8,10 +8,11 @@
 
 import SwiftUI
 
-struct ClassInfo: View {
+struct CourseInfo: View {
     var course: Course
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var store: CourseStore
+    //@ObservedObject var store = ReviewStore()
+    @EnvironmentObject var reviewStore: ReviewStore
     
     var body: some View {
         ScrollView {
@@ -55,10 +56,10 @@ struct ClassInfo: View {
                     .padding(.leading)
                     .padding(.bottom, -20)
                 
-                ReviewScrollView(courseRecordID: course.recordID)
-                    .onAppear {
-                        self.store.fetchReviews(courseRecordID: self.course.recordID!)
-                    }
+                    ReviewScrollView()//store: store)
+                        .onAppear {
+                            self.reviewStore.fetch(courseRecordID: self.course.recordID!)
+                        }
                 }
                 .navigationBarTitle(Text(course.name))
             .navigationBarItems(trailing: NavigationLink(destination: AddReview(courseRecordID: course.recordID!)) {
@@ -68,10 +69,10 @@ struct ClassInfo: View {
     }
 }
 
-struct ClassInfo_Previews: PreviewProvider {
+struct CourseInfo_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ClassInfo(course: .test)
+            CourseInfo(course: .test)
         }
     }
 }
