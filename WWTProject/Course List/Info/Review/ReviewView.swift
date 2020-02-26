@@ -12,29 +12,32 @@ struct ReviewView: View {
     var review: Review
     
     var body: some View {
-         
         VStack(alignment: .leading) {
-            Text(review.reviewerName)
-                .font(.system(size:20))
             HStack {
                 ForEach(1...review.rating, id: \.self) { _ in
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                        .font(.system(size:25))
+                    Star(filled: true)
                 }
            
                 ForEach(review.rating ..< 5, id: \.self) { _ in
-                    Image(systemName: "star")
-                        .foregroundColor(.yellow)
-                        .font(.system(size:25))
+                    Star(filled: false)
                 }
             }
+            
             Text(review.description)
-                .font(.system(size:20))
+                .lineLimit(nil)
+                .padding()
+            
+            HStack {
+                Spacer()
+                Text("-\(review.reviewerName)")
+                    .font(.caption)
+            }
         }
+        .frame(width: 300)
         .padding()
         .background(Color(.secondarySystemBackground))
         .cornerRadius(8)
+        
     }
 }
 

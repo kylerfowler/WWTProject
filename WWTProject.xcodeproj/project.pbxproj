@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,9 @@
 		904000532404146D00B5FFE7 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904000522404146D00B5FFE7 /* CircleButton.swift */; };
 		9040005A2404179800B5FFE7 /* AddCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904000592404179800B5FFE7 /* AddCalendarEvent.swift */; };
 		9040005C240417ED00B5FFE7 /* ScheduleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9040005B240417ED00B5FFE7 /* ScheduleEntry.swift */; };
+		9040005F240474F100B5FFE7 /* TextView in Frameworks */ = {isa = PBXBuildFile; productRef = 9040005E240474F100B5FFE7 /* TextView */; };
+		904000612404778500B5FFE7 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904000602404778500B5FFE7 /* TextView.swift */; };
+		904000632404792E00B5FFE7 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904000622404792E00B5FFE7 /* Star.swift */; };
 		90E3D80223D8CC5D009C764C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D80123D8CC5D009C764C /* AppDelegate.swift */; };
 		90E3D80423D8CC5D009C764C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D80323D8CC5D009C764C /* SceneDelegate.swift */; };
 		90E3D80723D8CC5D009C764C /* WWTProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90E3D80523D8CC5D009C764C /* WWTProject.xcdatamodeld */; };
@@ -47,6 +50,8 @@
 		904000522404146D00B5FFE7 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		904000592404179800B5FFE7 /* AddCalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalendarEvent.swift; sourceTree = "<group>"; };
 		9040005B240417ED00B5FFE7 /* ScheduleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEntry.swift; sourceTree = "<group>"; };
+		904000602404778500B5FFE7 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		904000622404792E00B5FFE7 /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		90E3D7FE23D8CC5D009C764C /* Torch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Torch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E3D80123D8CC5D009C764C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E3D80323D8CC5D009C764C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9040005F240474F100B5FFE7 /* TextView in Frameworks */,
 				90E3D82623DF8DE9009C764C /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +142,9 @@
 			children = (
 				3871713023FD896A004CC1FF /* ReviewScrollView.swift */,
 				38DD4FCD23E4C47D006DC4CC /* ReviewView.swift */,
+				904000622404792E00B5FFE7 /* Star.swift */,
 				3871712423FC37B2004CC1FF /* AddReview.swift */,
+				904000602404778500B5FFE7 /* TextView.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -207,6 +215,9 @@
 			dependencies = (
 			);
 			name = WWTProject;
+			packageProductDependencies = (
+				9040005E240474F100B5FFE7 /* TextView */,
+			);
 			productName = WWTProject;
 			productReference = 90E3D7FE23D8CC5D009C764C /* Torch.app */;
 			productType = "com.apple.product-type.application";
@@ -235,6 +246,9 @@
 				Base,
 			);
 			mainGroup = 90E3D7F523D8CC5D009C764C;
+			packageReferences = (
+				9040005D240474F100B5FFE7 /* XCRemoteSwiftPackageReference "TextView" */,
+			);
 			productRefGroup = 90E3D7FF23D8CC5D009C764C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,6 +277,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				904000532404146D00B5FFE7 /* CircleButton.swift in Sources */,
+				904000632404792E00B5FFE7 /* Star.swift in Sources */,
+				904000612404778500B5FFE7 /* TextView.swift in Sources */,
 				90E3D80723D8CC5D009C764C /* WWTProject.xcdatamodeld in Sources */,
 				90EA7BD623FC45F5002E4279 /* ReviewStore.swift in Sources */,
 				9040005C240417ED00B5FFE7 /* ScheduleEntry.swift in Sources */,
@@ -478,6 +494,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9040005D240474F100B5FFE7 /* XCRemoteSwiftPackageReference "TextView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kenmueller/TextView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9040005E240474F100B5FFE7 /* TextView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9040005D240474F100B5FFE7 /* XCRemoteSwiftPackageReference "TextView" */;
+			productName = TextView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		90E3D80523D8CC5D009C764C /* WWTProject.xcdatamodeld */ = {
