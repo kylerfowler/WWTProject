@@ -17,8 +17,11 @@ struct ReviewScrollView: View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(reviewStore.reviews) { review in
-                    ReviewView(review: review)
-                        .padding(.leading)
+                    VStack {
+                        ReviewView(review: review)
+                            .padding(.leading)
+                        Spacer()
+                    }
                 }
             }
         }

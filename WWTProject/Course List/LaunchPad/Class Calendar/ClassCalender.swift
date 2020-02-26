@@ -11,8 +11,8 @@ import CloudKit
 
 enum TaskType: String {
     case test = "Test"
-    case essay = "Essay"
     case project = "Project"
+    case essay = "Essay"
 }
 
 struct ClassCalender: View {
@@ -31,15 +31,13 @@ struct ClassCalender: View {
         List {
             ForEach(store.events) { event in
                 Group {
-                    if event.taskType == "test" || event.taskType == "Test" {
+                    if event.taskType == TaskType.test {
                         ScheduleEntry(colorTheme: .red, event: event, symbol: "pencil.circle.fill")
                         
-                    } else if event.taskType == "Project" || event.taskType == "project" {
+                    } else if event.taskType == TaskType.project {
                         ScheduleEntry(colorTheme: .blue, event: event, symbol: "paperclip.circle.fill")
                         
-                    } else if event.taskType == "Essay" {
-                        ScheduleEntry(colorTheme: .green, event: event, symbol: "doc.circle.fill")
-                    // if event.taskType = "essay"
+                    // if event.taskType == TaskType.essay
                     } else {
                         ScheduleEntry(colorTheme: .green, event: event, symbol: "doc.circle.fill")
                     }
