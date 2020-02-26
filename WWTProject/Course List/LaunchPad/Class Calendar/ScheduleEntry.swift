@@ -11,7 +11,7 @@ import SwiftUI
 struct ScheduleEntry: View {
     static let taskDateFormat: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .long
+        formatter.dateStyle = .short
         return formatter
     }()
     
@@ -23,20 +23,21 @@ struct ScheduleEntry: View {
     var body: some View {
         HStack {
             Image(systemName: symbol)
+                 .foregroundColor(colorTheme)
+                 .font(.system(size: 60))
+                 .padding(.vertical)
+            
+            Spacer()
+            Text(event.name)
                 .foregroundColor(colorTheme)
-                .font(.system(size: 60))
-                .padding(.vertical)
-            VStack {
-                Text(event.name)
-                    .foregroundColor(colorTheme)
-                    .font(.system(size:20))
-                    .bold()
-            }
-            Divider()
+                .font(.system(size:20))
+                .bold()
+                
+            Spacer()
             Text("\(event.date, formatter: Self.taskDateFormat)")
                 .foregroundColor(colorTheme)
                 .font(.system(size:20))
-                
         }
+           // .frame(width: 73, height: 60, alignment: .leading)
     }
 }

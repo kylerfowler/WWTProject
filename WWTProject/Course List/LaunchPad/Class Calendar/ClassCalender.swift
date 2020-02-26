@@ -46,7 +46,7 @@ struct ClassCalender: View {
                 }
             }
         }
-        .navigationBarTitle(Text("\(course.name) Schedule"))
+        .navigationBarTitle(Text("Schedule"))
         .onAppear {
             DispatchQueue.main.async {
                 self.store.fetch(courseRecordID: self.course.recordID!)
