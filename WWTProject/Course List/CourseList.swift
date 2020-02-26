@@ -43,6 +43,7 @@ struct CourseList: View {
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle("Classes")
         }
+    .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
             self.store.fetch()
         }

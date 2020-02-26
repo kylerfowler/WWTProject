@@ -6,25 +6,16 @@
 //  Copyright © 2020 Rob Fowler. All rights reserved.
 //
 
-
-struct TutorButton<Destination: View>: View {
-    var colorTheme: Color
-    var label: String
-    var symbol: String
-    var destination: Destination
+struct SendEmailButton: View {
+    var email: String
     
     var body: some View {
-        NavigationLink(destination: destination) {
-            VStack {
-                Image(systemName: symbol)
-                    .font(.system(size: 70))
-                    .foregroundColor(colorTheme)
-                    .padding(.vertical, 8)
-                Text(label)
-                    .font(.system(size: 17))
-                    .foregroundColor(colorTheme)
-                    .multilineTextAlignment(.center)
-            }
+        Text(email)
+            .foregroundColor(.blue)
+            .onTapGesture {
+                if let url = URL(string: "mailto:\(self.email)") {
+                    UIApplication.shared.open(url)
+                }
         }
     }
 }
@@ -32,17 +23,35 @@ struct TutorButton<Destination: View>: View {
 import SwiftUI
 
 struct TutorCenter: View {
-    
     var course: Course
     
+    @ObservedObject var store = TutorStore()
+    
     var body: some View {
-        ScrollView {
-            HStack {
-                VStack {
-                    TutorButton(colorTheme: .blue, label: "Request A Tutor", symbol: "arrow.up.circle.fill", destination: Text("Request a tutor"))
+        List(store.tutors) { tutor in
+            VStack {
+                HStack {
+                    Spacer()
+                    Text(tutor.name)
+                    Spacer()
+                }
+            
+                HStack {
+                    Spacer()
+                    SendEmailButton(email: tutor.email)
+                    Spacer()
                 }
             }
-        }.navigationBarTitle(Text("Tutor Center"))
+        }
+        .navigationBarTitle(Text("Tutor Center"))
+        .onAppear {
+            DispatchQueue.main.async {
+                self.store.fetch(courseRecordID: self.course.recordID!)
+            }
+        }
+        .onDisappear {
+            self.store.tutors = []
+        }
     }
 }
 

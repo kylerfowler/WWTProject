@@ -124,14 +124,46 @@ struct Review: Identifiable, Convertable {
     }
 }
 
-struct Tutor: Identifiable {
+struct Tutor: Identifiable, Convertable {
     var id = UUID()
     
+    static var RecordType = "Tutor"
+    
+    var recordID: CKRecord.ID?
+    
     var name: String
+    /*
     var course: String
     var availableDates: [Date]
     var isQualified: Bool
-    var recommendingTeacher: String
+    var recommendingTeacher: String*/
+    var email: String
+    
+    init?(from record: CKRecord) {
+        guard let name = record["name"] as? String else { return nil }
+        guard let email = record["email"] as? String else { return nil }
+        
+        self.init(recordID: record.recordID, name: name, email: email)
+    }
+    
+    init(recordID: CKRecord.ID?, name: String, email: String) {
+        self.recordID = recordID
+        self.name = name
+        self.email = email
+    }
+    
+    func convertToRecord() -> CKRecord {
+        let record = CKRecord(recordType: Self.RecordType)
+        
+        self.modify(record)
+        
+        return record
+    }
+    
+    func modify(_ record: CKRecord) {
+        record["name"] = name as CKRecordValue
+        record["email"] = email as CKRecordValue
+    }
 }
 
 struct Tutee: Identifiable {
